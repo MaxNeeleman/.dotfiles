@@ -1,0 +1,16 @@
+pyprland.plugins = [ "scratchpads" ]
+
+[scratchpads.volume]
+animation = "fromRight"
+command = "pavucontrol"
+class = "org.pulseaudio.pavucontrol"
+size = "40% 90%"
+unfocus = "hide"
+lazy = true
+
+[scratchpads.notes]
+animation = "fromTop"
+command = "kitty --class kitty-dropterm glow -p ~/shortcuts.md"
+class = "kitty-dropterm"
+unfocus = "hide"
+size = "75% 80%"
