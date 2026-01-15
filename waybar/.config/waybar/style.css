@@ -1,83 +1,99 @@
 * {
     border: none;
     border-radius: 0;
-    font-size: 11px;
+    /* The font we installed earlier */
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    min-height: 0;
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 1);
-    color: white;
+    background-color: #000000; /* True OLED Black */
+    color: #cdd6f4;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-tooltip {
-    background: rgba(43, 48, 59, 0.5);
-    border: 1px solid rgba(100, 114, 125, 0.5);
-}
-tooltip label {
-    color: white;
+window#waybar.hidden {
+    opacity: 0.2;
 }
 
+/* --- WORKSPACES --- */
 #workspaces button {
-    padding: 0 5px;
-    background: transparent;
-    color: white;
-}
-
-#workspaces button.focused {
-    background: blueviolet;
-    border-bottom: 3px solid white;
-}
-
-#workspaces button.active {
-    color: #48A6A7;
-}
-
-#mode, 
-#clock, 
-#battery,
-#temperature,
-#custom-notification,
-#mpris,
-#network {
     padding: 0 10px;
+    background-color: transparent;
+    color: #cdd6f4;
+}
+
+/* Active Workspace: The Cool Blue from your border */
+#workspaces button.active {
+    color: #89b4fa;
+    border-bottom: 2px solid #89b4fa; 
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+}
+
+/* --- MODULES --- */
+/* We add a little padding to separate them nicely */
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#network,
+#tray {
+    padding: 0 15px;
+    margin: 0 4px;
+    color: #cdd6f4;
+    background-color: #000000;
+}
+
+/* Specific Pastel Accents for each module */
+
+#cpu {
+    color: #94e2d5; /* Mint Green */
+}
+
+#memory {
+    color: #cba6f7; /* Lavender */
+}
+
+#pulseaudio {
+    color: #89b4fa; /* Cool Blue */
+}
+
+#network {
+    color: #a6e3a1; /* Green */
 }
 
 #clock {
-    color: white;
+    color: #fab387; /* Soft Peach/Orange for contrast */
 }
 
-#battery {
-    color: white;
+/* Tray usually has colorful icons, so we keep the background black */
+#tray {
+    background-color: #000000;
 }
 
-#battery.charging {
-    color: white;
-    background-color: #26A65B;
+/* --- WINDOW TITLE --- */
+window#waybar {
+    /* Ensure the main background stays black */
+    background-color: #000000;
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
+#window {
+    color: #cdd6f4; /* Soft White */
+    font-weight: bold;
 }
 
-#battery.warning:not(.charging) {
-    background: #ef6718;
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+/* If the window is maximized/fullscreen, maybe make it pop (Optional) */
+window#waybar.empty #window {
+    background-color: transparent;
 }
 
-#battery.crictical:not(.charging) {
-    background: #f53c3c;
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+#custom-notification {
+    padding: 0 15px;
+    color: #f9e2af; /* Yellow/Gold bell */
+    background-color: #000000;
 }
