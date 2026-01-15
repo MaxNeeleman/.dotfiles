@@ -1,194 +1,194 @@
-/*
- * vim: ft=less 
- */
+/* ~/.config/swaync/style.css */
 
-@define-color border-color rgb(7, 7, 7);
-@define-color bg rgb(58, 58, 58);
-@define-color bg-hover rgb(68, 68, 68);
-@define-color bg-focus rgba(68, 68, 68, 0.6);
-@define-color bg-selected rgb(0, 128, 255);
+/* --- GLOBAL FONT --- */
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+}
 
+/* --- MAIN WINDOW (The Center) --- */
+.control-center {
+    background: #000000; /* OLED Black */
+    border: 2px solid #89b4fa; /* Cool Blue Border */
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+/* --- THE NOTIFICATION BUBBLES (Popups) --- */
+/* The outer wrapper for each notification row */
 .notification-row {
-  outline: none;
-}
-.notification-row:focus,
-.notification-row:hover {
-  background: @bg-focus;
+    outline: none;
+    margin: 5px; /* Space between notifications */
 }
 
+/* The actual notification container */
 .notification {
-  border-radius: 10px;
-  margin: 6px 12px;
-  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.3);
-  padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none; /* Removes default shadows/gray outlines */
 }
 
+/* The content inside (where we want our custom border) */
 .notification-content {
-  background: transparent;
-  padding: 6px;
-  border-radius: 10px;
+    background: #000000; /* OLED Black */
+    padding: 15px;
+    border-radius: 12px;
+    
+    /* Your custom Mint border */
+    border: 2px solid #94e2d5; 
+    
+    /* Optional: Add a subtle shadow back IF you want depth */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1.0); 
 }
 
-.close-button {
-  background: black;
-  color: white;
-  text-shadow: none;
-  padding: 0 2px;
-  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.3);
-  border-radius: 100%;
-}
-.close-button:hover {
-  background: rgb(30, 30, 30);
-  transition: all 0.15s ease-in-out;
+/* Remove ugly gray selection box when you hover/click */
+.notification-row:focus, 
+.notification-row:hover {
+    background: transparent;
+    box-shadow: none;
+    border: none;
 }
 
-.notification-default-action,
-.notification-action {
-  padding: 4px;
-  margin: 0;
-  box-shadow: none;
-  background: @bg;
-  border: 1px solid @border-color;
-}
-
-.notification-default-action:hover,
-.notification-action:hover {
-  background: @bg-hover;
-}
-
-.notification-default-action {
-  border-radius: 10px;
-}
-
-/* When alternative actions are visible */
-.notification-default-action:not(:only-child) {
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
-
-.notification-action {
-  border-radius: 0px;
-  border-top: none;
-  border-right: none;
-}
-
-/* add bottom border radius to eliminate clipping */
-.notification-action:first-child {
-  border-bottom-left-radius: 10px;
-}
-.notification-action:last-child {
-  border-bottom-right-radius: 10px;
-  border-right: 1px solid @border-color;
-}
-
-.image {
-}
-
-.body-image {
-  margin-top: 6px;
-  background-color: white;
-  border-radius: 10px;
-}
-
+/* --- TEXT COLORS --- */
 .summary {
-  color: white;
-  text-shadow: none;
-}
-
-.time {
-  color: white;
-  text-shadow: none;
+    color: #cdd6f4; /* White title */
+    font-size: 16px;
 }
 
 .body {
-  background: transparent;
-  color: white;
-  text-shadow: none;
+    color: #a6adc8; /* Greyish body */
+    font-size: 14px;
 }
 
-.top-action-title {
-  color: white;
-  text-shadow: none;
+.time {
+    color: #cba6f7; /* Lavender Time */
 }
 
-.control-center-clear-all {
-  color: white;
-  text-shadow: none;
-  background: @bg;
-  border: 1px solid @border-color;
-  box-shadow: none;
-  border-radius: 10px;
-}
-.control-center-clear-all:hover {
-  background: @bg-hover;
+/* --- BUTTONS (Clear All / DND) --- */
+.widget-dnd {
+    background: #000000;
+    color: #cdd6f4;
+    border-radius: 8px;
+    border: 1px solid #585b70;
 }
 
-.control-center-dnd {
-  border-radius: 10px;
-  background: @bg;
-  border: 1px solid @border-color;
-  box-shadow: none;
+.widget-dnd > switch:checked {
+    background: #89b4fa; /* Blue when DND is ON */
 }
 
-.control-center-dnd:checked {
-  background: @bg-selected;
-}
-.control-center-dnd slider {
-  background: @bg-hover;
+.widget-label > label {
+    color: #cdd6f4;
 }
 
-.control-center {
-  background: rgba(0, 0, 0, 0.7);
-}
-.control-center-list {
-  background: transparent;
-}
-
-.floating-notifications {
-  background: transparent;
+/* Delete Button */
+.widget-menubar > box > button {
+    background: #000000;
+    color: #f38ba8; /* Red for delete */
 }
 
+/* --- POWER BUTTONS GRID --- */
 .widget-buttons-grid {
-  border-radius: 1.159rem;
-  -gtk-outline-radius: 1.159rem;
-  padding: 0.341rem;
-  background-color: rgba(28, 28, 34, 0.35);
-  padding: unset;
+    font-size: 25px; /* Slightly bigger icons */
+    padding: 5px;
+    margin: 10px 10px 5px 10px;
+    border-radius: 12px;
+    background: #000000;
 }
 
-.widget-buttons-grid>flowbox {
-  padding: unset;
+/* Target the wrapper of the buttons to ensure full width */
+.widget-buttons-grid > flowbox {
+    /* This forces the flowbox to define children spacing */
+    padding: 0px; 
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button:first-child {
-  margin-left:unset ;
+/* Target the individual item wrappers */
+.widget-buttons-grid > flowbox > flowboxchild {
+    /* CRITICAL CHANGE:
+       Increase this value to push buttons to the edge.
+       If they wrap to a second line, lower this by 5px.
+    */
+    min-width: 115px; 
+    max-width: 150px;
+    margin: 0px;
+    padding: 0px;
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button {
-  border:none;
-  background-color: unset;
-  border-radius: 9999px;
-  min-width: 5.522rem;
-  min-height: 2.927rem;
-  padding: unset;
-  margin: unset;
+/* Target the actual buttons inside */
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    background: #000000;
+    color: #cdd6f4;
+    border: 2px solid #585b70;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 0px 3px; /* Tighter gap between buttons */
+    
+    /* Ensure button fills the slot */
+    min-width: 100%; 
+    min-height: 60px; /* Taller click targets */
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button label {
-  font-family: "Materials Symbol Rounded";
-  font-size: 1.3027rem;
-  color: #e4e1e6;
+/* --- HOVER EFFECTS (Keep these from before) --- */
+
+/* Lock - Lavender */
+.widget-buttons-grid > flowbox > flowboxchild:nth-child(1) > button:hover {
+    border-color: #cba6f7;
+    background-color: #cba6f7;
+    color: #000000; /* Invert colors on hover for punchy effect */
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button:hover {
-  background-color: rgba(128, 128, 128, 0.3);
+/* Logout - Blue */
+.widget-buttons-grid > flowbox > flowboxchild:nth-child(2) > button:hover {
+    border-color: #89b4fa;
+    background-color: #89b4fa;
+    color: #000000;
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button:checked {
-  /* OnePlus McClaren edition Orange accent */
-  background-color: #ff9f34;
+/* Reboot - Mint */
+.widget-buttons-grid > flowbox > flowboxchild:nth-child(3) > button:hover {
+    border-color: #94e2d5;
+    background-color: #94e2d5;
+    color: #000000;
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button:checked label {
-  color: #14141B;
+/* Shutdown - Red */
+.widget-buttons-grid > flowbox > flowboxchild:nth-child(4) > button:hover {
+    border-color: #f38ba8;
+    background-color: #f38ba8;
+    color: #000000;
+}
+
+/* --- NOTIFICATION GROUPING (The Gray Box) --- */
+
+/* The container that wraps notifications from a specific app */
+.notification-group {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+/* The header bar showing the app name (e.g., "notify-send") */
+.notification-group-header {
+    background: transparent;
+    color: #cdd6f4; /* Matches your summary color */
+    margin: 5px 10px; /* Aligns header with your bubbles */
+}
+
+/* The 'X' and 'Clear' buttons inside the group header */
+.notification-group-icon,
+.notification-group-close-button {
+    color: #cdd6f4;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Hover effect for the group close button */
+.notification-group-close-button:hover {
+    background: #f38ba8; /* Your red color */
+    color: #000000;
+}
+
+/* Ensure the general notification widget area is also clear */
+.widget-notifications {
+    background: transparent;
 }

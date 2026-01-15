@@ -1,77 +1,61 @@
 {
+  "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "top",
-  "timeout": 10,
-  "timeout-low": 5,
-  "timeout-critical": 0,
-  "control-center-width": 500,
-  "notification-window-width": 400,
-  "keyboard-shortcuts": true,
-  "image-visibility": "always",
-  "transition-time": 200,
-  "hide-on-clear": true,
-  "hide-on-action": true,
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "cssPriority": "user",
   "control-center-margin-top": 10,
   "control-center-margin-bottom": 10,
-  "control-center-margin-right": 10,
+  "control-center-margin-right": 0,
   "control-center-margin-left": 0,
+  "notification-2fa-action": true,
+  "notification-inline-replies": false,
+  "notification-icon-size": 64,
+  "notification-body-image-height": 100,
+  "notification-body-image-width": 200,
+
+  "widgets": [
+    "title",
+    "buttons-grid",
+    "dnd",
+    "mpris",
+    "notifications"
+  ],
+
   "widget-config": {
+    "label": {
+      "max-lines": 1,
+      "text": "Control Center"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
     "buttons-grid": {
       "actions": [
         {
-          "active": false,
-          "command": "/home/maxn/.config/swaync/hyprsunset_toggle.sh",
-          "label": "󰤄",
-          "type": "button"
+          "label": "",
+          "command": "hyprlock"
         },
         {
-          "active": false,
-          "command": "swaync-client -d",
-          "label": "",
-          "type": "toggle"
+          "label": "",
+          "command": "hyprctl dispatch exit"
         },
         {
-          "active":false,
-          "command":"obs",
-          "label":"󰄀",
-          "type": "button"
+          "label": "",
+          "command": "systemctl reboot"
         },
         {
-          "active":false,
-          "command":"obs",
-          "label":"󰕧",
-          "type": "button"
-        },
-        {
-          "active": false,
-          "command": "swaync-client -t",
           "label": "",
-          "type": "toggle"
+          "command": "systemctl poweroff"
         }
       ]
     },
-    "mpris": {
-      "image-radius": 12,
-      "image-size": 96
-    },
     "title": {
-      "text": "Notifications",
-      "button-text": "󰎟 Clear",
-      "clear-all-button": true      
-    },
-    "volume": {
-      "label": "",
-        "show-per-app": true,
-        "show-per-app-icon": true,
-        "show-per-app-label":true
+      "text": "Control Center",
+      "clear-all-button": true,
+      "button-text": "Clear All"
     }
-},
-
-  "widgets": [
-    "buttons-grid",
-    "title",
-    "notifications",
-    "mpris",
-    "volume"
-  ]
+  }
 }
